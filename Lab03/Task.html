@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <script language="JavaScript">
+        let name = prompt("Введи свое имя","")
+        document.write("Привет " + name + "!<br>") 
+    </script>
+    <script language="JavaScript">
+        alert("Привет, \njavascript!")
+    </script>
+    <script language="JavaScript">
+        let result = confirm("Нажмите Ок")
+        if (result === true) {
+                alert("Вы нажали ОК");
+            } else {
+                alert("Вы нажали Отмена");
+            }
+    </script>
+    <script language="JavaScript">
+        let number = prompt("Введите свое имя")
+        let res = confirm("Введенное имя правильное?")
+        if (res){
+                document.write("Здравствуйте, " + number)
+            } else {
+                number = prompt("Введите свое имя")
+                document.write("Здравствуйте, " + number)
+            }
+    </script>
+</body>
+</html>
