@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="textOne" type="text" placeholder="Название"><br>
+    <button id="buttonOne" onclick="TaskOne()">Задание 1</button><br>
+    <button id="buttonTwo" onclick="TaskTwo()">Задание 2</button><br>
+    <input id="numberOne" type="text" placeholder="a"><br>
+    <input id="numberTwo" type="text" placeholder="b"><br>
+    <button id="buttonTwo" onclick="TaskThree()">Задание 3</button><br>
+    <input id="textTwo" type="text" placeholder="Логин"><br>
+    <button id="buttonThree" onclick="TaskFour()">Задание 4</button><br>
+    <script>
+        function TaskOne(){
+            var name = document.getElementById("textOne").value;
+            if(name == "ECMAScript"){
+                alert("Верно!")
+            } else 
+            {
+                alert("Не знаете? ECMAScript!")
+            }
+        }
+        function TaskTwo(){
+            var number = prompt("Выберите число");
+            if(number > 0){
+                alert(1)
+            } else if(number < 0)
+            {
+                alert(-1)
+            } else{
+                alert(0)
+            }
+        }
+        function TaskThree(){
+            var a = Number(document.getElementById("numberOne").value);
+            var b = Number(document.getElementById("numberTwo").value);
+            let result = ((a + b) < 4)?"Мало":"Много";
+            alert(result);
+        }
+        function TaskFour(){
+            var login = document.getElementById("textTwo").value;
+            var message = 
+            login == 'Сотрудник' ? 'Привет' :
+            login == 'Директор' ? 'Здравствуйте' :
+            login == '' ? 'Нет логина' : '';
+            alert(message)
+        }
+    </script>
+</body>
+</html>
