@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Задание 1</p>
+    <input id="numberOne" type="text" placeholder="a"><br><br>
+    <input id="numberTwo" type="text" placeholder="b"><br><br>
+    <input id="numberThree" type="text" placeholder="c"><br><br>
+    <button id="button" onclick="TaskOne()">Нажми на меня </button>
+
+    <p>Задание 5 6</p>
+    <input id="numberA" type="text" placeholder="a"><br><br>
+    <input id="numberB" type="text" placeholder="b"><br><br>
+    <button id="buttonOne" onclick="TaskFive()">Задание 5 </button>
+    <button id="buttonTwo" onclick="TaskSix()">Задание 6 </button><br>
+
+    <p>Задание 7</p>
+    <input id="number1" type="text" placeholder="a"><br><br>
+    <input id="number2" type="text" placeholder="b"><br><br>
+    <input id="number3" type="text" placeholder="b"><br><br>
+    <button id="button1" onclick="TaskSeven()">Задание 7 </button>
+
+    <script>
+        function TaskOne(){
+            var numOne = document.getElementById("numberOne").value;
+            var numTwo = document.getElementById("numberTwo").value;
+            var numThree = document.getElementById("numberThree").value;
+            var D = (numOne**2) - 4*numOne*numThree;
+            alert(D)
+        }
+        function TaskFive(){
+            var numOne = document.getElementById("numberA").value;
+            var numTwo = document.getElementById("numberB").value;
+            if (isNaN(numOne) || isNaN(numTwo)) {
+                alert("Пожалуйста, введите числовые значения.");
+            } else {
+                var result = "";
+                if (numOne > numTwo) {
+                    result = "a > b : true";
+                } else if (numOne < numTwo) {
+                    result = "a < b : false";
+                } else {
+                    result = "a = b : true";
+                }
+                alert(result);
+            }
+        }
+        function TaskSix(){
+            var numOne = numberA.value;
+            var numTwo = numberB.value;
+            var result = "";
+            if (a > b) {
+            result = "a > b : true";
+            } else if (a < b) {
+            result = "a < b : false";
+            } else {
+            result = "a = b : false";
+            }
+            alert(result);
+        }
+        function TaskSeven(){
+            var a = document.getElementById("number1").value;
+            var b = document.getElementById("number2").value;
+            var c = document.getElementById("number3").value;
+            var result = 0.5 * Math.sqrt(2 * Math.pow(b,2) + 2 * Math.pow(c,2 ) - Math.pow(a,2))
+            alert(result);
+        }
+    </script>
+    <script>
+        var a = "" + 1 + 0;
+        var b = 9;
+        alert("Задание 2 " + (a != b) ) // true
+    </script>
+    <script>
+        var c = "" - 1 + 0;
+        var d = true + false;
+        alert("Задание 3 " + (c == d)); // false
+    </script>
+    <script>
+        var num = 1;
+        num += 12;
+        num -= 14;
+        num *= 5;
+        num /= 7;
+        num++;
+        num--;
+        alert("Задание 4 " + num);
+    </script>
+
+</body>
+</html>
