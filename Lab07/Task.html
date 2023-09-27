@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var markArr = [1,2,1,5,3,1,2,4,5,3]
+        var count1 = 0
+        var count2 = 0
+        var count3 = 0
+        var count4 = 0
+        var count5 = 0 
+
+        for(var i = 0; i < markArr.length;i++)
+        {
+            if(markArr[i] == 1){
+                count1++
+            } else if(markArr[i] == 2){
+                count2++
+            }else if(markArr[i] == 3){
+                count3++
+            }else if(markArr[i] == 4){
+                count4++
+            }else if(markArr[i] == 5){
+                count5++
+            }
+        }
+        alert("1 = " + count1 + "\n2 = " + count2 + "\n3 = " + count3 + "\n4 = " + count4 + "\n5 = " + count5)
+    </script>
+    <script>
+        var arr = [-4,5,2,7,1,7,8,4,7,8,-100,0]
+        var min = Math.abs(arr[0])
+        for(var i = 0; i < arr.length;i++)
+        {
+            if(Math.abs(arr[i]) < min)
+            {
+                min = Math.abs(arr[i])
+            }
+        }
+        alert("Минимальный модуль числа это " + min)
+    </script>
+</body>
+</html>
