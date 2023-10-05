@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Задание 1 
+        console.log("Задание 1")
+        var user = {}
+        console.log(isEmpty(user))
+        user.name = 'John'
+        user.surname = 'Smith'
+        user.name = 'Pete'
+        console.log(user)
+        delete user.name
+        console.log(user)
+
+        //Задание 2
+        console.log("Задание 2")
+        var test = {}
+        console.log(isEmpty(user))
+
+        //Задание 3
+        console.log("Задание 3")
+        var salaries = {
+            John: 100,
+            Ann: 160,
+            Pete: 130
+        }
+        console.log(calcSum(salaries))
+
+        //Задание 4 
+        console.log("Задание 4")
+        var multi = {salary: 300}
+        multiplyNumeric(multi)
+
+        //Задание 2 Вариант 1
+        console.log("Задание 5")
+        var Student={};
+        var arrayStudent=[];
+        arrayStudent = setValue(arrayStudent)
+        displayStudent(arrayStudent)
+
+        function isEmpty(obj){
+            for(var key in obj)
+            {
+                if(key != undefined)
+                {
+                    return true
+                }
+            }
+            return false
+        }
+
+        function calcSum(obj)
+        {
+            var sum = 0;
+            for(var key in obj)
+            {
+                sum += obj[key];
+            }
+            return sum
+        }
+
+        function multiplyNumeric(obj)
+        {
+            for(var key in obj)
+            {
+                obj[key]*=2
+            }
+            console.log(obj)
+        }
+
+        function setPerformance()
+        {
+            var array = [];
+            for(var i = 0; i < 5; i ++)
+            {
+                array[i] = parseInt(prompt("Введите отметку " + (i + 1)));
+            }
+            return array;
+        }
+
+        function setValue(obj)
+        {
+            for(var i = 0; i < 2; i++)
+            {
+                var surname = prompt("Введиет свою фамилию и инициалы ученика " + (i + 1),"")
+                var group = prompt("Введиет свою группу ученика " + (i + 1),"")
+                var performance = setPerformance()
+                var Student = {
+                    surname:surname,
+                    group:group,
+                    performance:performance
+                }
+                obj[i] = Student
+            }
+            obj.sort((a, b) => a.group.localeCompare(b.group));
+            return obj
+        }
+
+        function displayStudent(array)
+        {   
+            var counter = 0;
+            for(var i = 0; i < array.length; i++)
+            {
+                var sum = 0;
+                for(var j = 0; j < 5; j++)
+                {
+                    sum += array[i].performance[j];
+                }
+                if(sum/4 > 4)
+                {
+                    console.log(array[i]);
+                    counter++;
+                }
+                
+            }
+            if(counter == 0)
+            {
+                console.log("Ученики не найдены")
+            }
+
+        }
+    </script>
+</body>
+</html>
