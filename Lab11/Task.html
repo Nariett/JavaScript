@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var NOTE = {
+            NAME:"Саша",
+            TELE:"+375291045234",
+            DATE:"07.10.2010"
+        }
+        var copiedByValue = Object.assign({}, NOTE);
+        var copiedByLink = NOTE;
+        console.log(NOTE);
+        console.log(copiedByValue);
+        console.log(copiedByLink);
+    </script>
+</body>
+</html>
