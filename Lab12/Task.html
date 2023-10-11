@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var NOTE = {
+            NAME: "Саша",
+            TELE: "+375291045234",
+            DATE: "07.10.2010"
+        };
+        var notesArray = [];
+        for (var i = 0; i < 11; i++) {
+            notesArray.push(Object.assign({}, NOTE));
+        }
+        console.log("Исходный массив объектов:", notesArray);
+        setTimeout(function() {
+            notesArray.pop();
+            console.log("Массив после удаления копии:", notesArray);
+            }, 2000);
+    </script>
+</body>
+</html>
