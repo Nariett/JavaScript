@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Worker(name,salary,year){
+            this.name = name;
+            this.salary = salary;
+            this.year = year;
+            this.age = function(){
+                alert(new Date().getFullYear() - year);
+            }
+            this.pension = function () {
+                var yearNow = 50 - (new Date().getFullYear() - year);
+                var daysLeft = yearNow * 365;
+                alert("До 50 лет осталось " + daysLeft + " дней.");
+            };
+        }
+        var work = new Worker("Саша",2220,2004);
+        work.age();
+        work.pension();
+    </script>
+</body>
+</html>
