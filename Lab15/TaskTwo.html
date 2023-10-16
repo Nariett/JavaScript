@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function checkSpam(str)
+        {
+            var result = str.indexOf('торрент');
+            if(result == 0)
+            {
+                return true;
+            } else {
+                result = str.indexOf('МММ');
+                if(result == 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        var text = 'МММ';
+        alert(checkSpam(text));
+        var text = 'торрент';
+        alert(checkSpam(text));
+    </script>
+</body>
+</html>
