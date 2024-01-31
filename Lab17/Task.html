@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function camelize(str){
+
+        }
+
+        function filterRange(arr,a,b){
+            return arr.filter(item => (a <= item && item <= b));
+        }
+
+        function camelize(str) {
+            return str.replace(/-([a-z])/g, function(match, letter) {
+                return letter.toUpperCase();
+            });
+        }
+
+        function filterRangeInPlace(arr,a,b){
+            for (let i = 0; i < arr.length; i++) {
+                let val = arr[i];
+                if (val < a || val > b) {
+                    arr.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+        function copySorted(arr) {
+            return arr.slice().sort();
+        }
+
+
+        console.log("Задание 1")
+        console.log(camelize("background-color"));
+        console.log(camelize("list-style-image"));
+        console.log(camelize("-webkit-transition"));
+
+        console.log("Задание 2")
+        let arr = [5, 3, 8, 1];
+        let filtered = filterRange(arr, 1, 4);
+        console.log( filtered );
+        console.log( arr );
+
+        console.log("Задание 3");
+        let arr2 = [5, 3, 8, 1];
+        filterRangeInPlace(arr2, 1, 4); 
+        console.log( arr2 );
+
+        console.log("Задание 4");
+        let arr3 = ["HTML", "JavaScript", "CSS"];
+        let sorted = copySorted(arr3);
+        console.log( sorted );
+        console.log( arr3 );
+
+        console.log("Задание 5");
+        let vasya = { name: "Вася", age: 25 };
+        let petya = { name: "Петя", age: 30 };
+        let masha = { name: "Маша", age: 28 };
+        let users = [ vasya, petya, masha ];
+        let names = users.map(item => item.name);
+        console.log( names ); 
+
+
+    </script>
+</body>
+</html>

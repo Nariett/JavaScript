@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part One</title>
+</head>
+<body>
+    <script>
+        function is_array(input) {
+            return Array.isArray(input);
+        }
+
+        function arrayClone(arr) {
+            if (!Array.isArray(arr)) {
+                return null; 
+            }
+            let clonedArray = arr.slice();
+            for (let i = 0; i < clonedArray.length; i++) {
+                if (Array.isArray(clonedArray[i])) {
+                    clonedArray[i] = arrayClone(clonedArray[i]);
+                }
+            }
+            return clonedArray;
+        }
+
+        function firstEl(arr,n) {
+            if (n === undefined || n <= 0) {
+                return arr.slice(0, 1);
+            } else {
+                return arr.slice(0, n);
+            }   
+        }
+        
+        function lastEl(arr,n) {
+            if (n === undefined || n >= arr.length) {
+                return arr.slice(-1);
+            } else if (n > 0) {
+                return arr.slice(-n);
+            } else {
+                return [];
+            }  
+        }
+
+        function mergeArr(arr)
+        {
+            if(!Array.isArray(arr))
+            {
+                console.log("Не массив");
+            }
+            else{
+                console.log(arr.join(", "));
+                console.log(arr.join(". "));
+                console.log(arr.join(" + "));
+            }
+        }
+
+        function count(arr)
+        {
+            var elementCount = {};
+
+            for (var i = 0; i < arr.length; i++) {
+                var element = arr[i];
+                elementCount[element] = (elementCount[element] || 0) + 1;
+            }
+
+            var mostFrequentElement;
+            var maxCount = 0;
+
+            for (var key in elementCount) {
+                if (elementCount[key] > maxCount) {
+                    mostFrequentElement = key;
+                    maxCount = elementCount[key];
+                }
+            }
+
+            console.log(mostFrequentElement + " (" + maxCount + " раз)");
+        }
+
+        function sumMul(arr)
+        {
+            var sum = 0;
+            var mul = 1;
+            for(var x of arr)
+            {
+                sum += Number(x);
+                mul *= Number(x);
+            }
+            console.log(`Сумма равна ${sum}`);
+            console.log(`Произведение равно ${mul}`);
+        }
+        function removeDuplicates(arr) 
+        {
+            var uniqueArray = [];
+            var lowerCaseMap = {};
+            for (var i = 0; i < arr.length; i++) {
+                var currentElement = arr[i].toLowerCase();
+
+                if (!lowerCaseMap[currentElement]) {
+                    lowerCaseMap[currentElement] = true;
+                    uniqueArray.push(arr[i]);
+                }
+            }
+            console.log(uniqueArray)
+        }
+
+        function binarySearch(arr, target) 
+        {
+            var left = 0;
+            var right = arr.length - 1;
+
+            while (left <= right) {
+                var mid = Math.floor((left + right) / 2);
+
+                if (arr[mid] === target) {
+                    return mid; 
+                } else if (arr[mid] < target) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+
+            return -1; 
+        }
+
+        function convertToBin(number) {
+            console.log(number.toString(2));
+        }
+
+        console.log("Первое задание")
+        console.log(is_array('resource'));
+        console.log(is_array([1, 2, 4, 0]));
+
+        console.log("Второе задание")
+        console.log(arrayClone([1, 2, 4, 0]));
+        console.log(arrayClone([1, 2, [4, 0]]));
+
+        console.log("Третье задание")
+        console.log(firstEl([7, 9, 0, -2]));
+        console.log(firstEl([], 3));
+        console.log(firstEl([7, 9, 0, -2], 3));
+        console.log(firstEl([7, 9, 0, -2], 6));
+        console.log(firstEl([7, 9, 0, -2], - 3));
+        
+        console.log("Четвертое задание")
+        console.log (lastEl ([7, 9, 0, -2]));
+        console.log (lastEl ([7, 9, 0, -2], 3));
+        console.log (lastEl ([7, 9, 0, -2], 6));
+
+        console.log("Пятое задание");
+        mergeArr( myColor = ["Red", "Green", "White", "Black"]);
+
+        console.log("Шестое задание");
+        console.log([3,8,7,6,5,-4,-3,2,1].sort((a,b) => a - b))
+
+        console.log("Седьмое задание");
+        count(arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3])
+
+        console.log("Восьмое задание");
+        sumMul([1,2,3,4,5,6,7,8,9,10])
+
+        console.log("Девятое задание");
+        removeDuplicates(["apple", "Banana", "APPLE", "orange", "banana", "Orange"])
+
+        console.log("Десятое задание");
+        var sortedArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var targetElement = 5;
+        var result = binarySearch(sortedArray,targetElement);
+        if (result !== -1) {
+            console.log(`Элемент ${targetElement} найден по индексу ${result}.`);
+        } else {
+            console.log(`Элемент ${targetElement} не найден в массиве.`);
+        }
+
+        console.log("Вариант 1");
+        convertToBin(42);
+
+        
+    </script>
+</body>
+</html>
