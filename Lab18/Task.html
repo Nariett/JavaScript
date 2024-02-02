@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getWeekDay(date) {
+            var daysOfWeek = ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
+
+            var dayIndex = date.getDay();
+            return daysOfWeek[dayIndex];
+        }
+
+        function getLocalDay(date) {
+            var day = date.getDay();
+            return (day === 0) ? 7 : day;
+        }
+
+        function getDateAgo(date, days) {
+            var clonedDate = new Date(date);
+            clonedDate.setDate(date.getDate() - days);
+            return clonedDate.getDate();
+        }
+
+        function formatDate(date) {
+            var now = new Date();
+            var diff = now - date;
+
+            if (diff < 1000) {
+                return "прямо сейчас";
+            } else if (diff < 60000) {
+                return Math.floor(diff / 1000) + " сек. назад";
+            } else if (diff < 3600000) {
+                return Math.floor(diff / 60000) + " мин. назад";
+            } else {
+                var formattedDate = [
+                    ('0' + date.getDate()).slice(-2),
+                    ('0' + (date.getMonth() + 1)).slice(-2),
+                    ('0' + date.getFullYear() % 100).slice(-2)
+                ].join('.');
+
+                var formattedTime = [
+                    ('0' + date.getHours()).slice(-2),
+                    ('0' + date.getMinutes()).slice(-2)
+                ].join(':');
+
+                return formattedDate + ' ' + formattedTime;
+            }
+        }
+
+        function getMonthsDifference(startDate, endDate) {
+            var monthsDifference = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth());
+            return monthsDifference;
+        }
+
+        function startWashingMachine(washDuration) {
+            var startTime = new Date();
+            var endTime = new Date(startTime.getTime() + washDuration * 60000); // Преобразование минут в миллисекунды
+
+            console.log('Старт стирки в', startTime.toLocaleString());
+            console.log('Окончание стирки в', endTime.toLocaleString());
+        }
+
+        console.log("Задание 1");
+        console.log(new Date(2012, 1, 20, 3, 12));
+
+        console.log("Задание 2");
+        var today = new Date();
+        console.log(getWeekDay(today));
+
+        console.log("Задание 3");
+        console.log(getLocalDay(today));
+
+        console.log("Задание 4");
+        var today = new Date();
+        console.log(getDateAgo(today, 541));
+
+        console.log("Задание 5");
+        var exampleDate1 = new Date();
+        var exampleDate2 = new Date(exampleDate1 - 2500);
+        console.log(formatDate(exampleDate1));
+        console.log(formatDate(exampleDate2));
+
+        console.log("Задание 6");
+        var date1 = new Date('2022-01-15');
+        var date2 = new Date('2023-06-20');
+        var monthsDifference = getMonthsDifference(date1, date2);
+        console.log('Количество месяцев между датами:', monthsDifference);
+        var washDuration = 60;
+        startWashingMachine(washDuration);
+    </script>
+</body>
+
+</html>

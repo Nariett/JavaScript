@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class FurnitureSalon {
+            constructor() {
+                this.orders = [];
+            }
+
+            addOrder(orderNumber, orderDate, customerName, customerAddress, daysToComplete, orderCost) {
+                this.orders.push({
+                    orderNumber: orderNumber,
+                    orderDate: orderDate,
+                    customerName: customerName,
+                    customerAddress: customerAddress,
+                    daysToComplete: daysToComplete,
+                    orderCost: orderCost
+                });
+            }
+
+            displayOrders() {
+                console.log("Список всех заказов:");
+                this.orders.forEach(order => {
+                    console.log(`№ заказа: ${order.orderNumber}`);
+                    console.log(`Дата заказа: ${order.orderDate}`);
+                    console.log(`ФИО заказчика: ${order.customerName}`);
+                    console.log(`Адрес заказчика: ${order.customerAddress}`);
+                    console.log(`Срок выполнения (в днях): ${order.daysToComplete}`);
+                    console.log(`Стоимость заказа: ${order.orderCost}`);
+                    console.log("---------------");
+                });
+            }
+
+            displayOrdersByMonth(month) {
+                const currentYear = new Date().getFullYear();
+
+                console.log(`Информация о заказах, сделанных в ${month}.${currentYear}:`);
+                this.orders.forEach(order => {
+                    const orderDate = new Date(order.orderDate);
+                    if (orderDate.getFullYear() === currentYear && orderDate.getMonth() + 1 === month) {
+                        console.log(`№ заказа: ${order.orderNumber}`);
+                        console.log(`Дата заказа: ${order.orderDate}`);
+                        console.log(`ФИО заказчика: ${order.customerName}`);
+                        console.log(`Адрес заказчика: ${order.customerAddress}`);
+                        console.log(`Срок выполнения (в днях): ${order.daysToComplete}`);
+                        console.log(`Стоимость заказа: ${order.orderCost}`);
+                        console.log("---------------");
+                    }
+                });
+            }
+        }
+        const salon = new FurnitureSalon();
+
+        salon.addOrder(1, "2023-02-01", "Иванов Иван", "ул. Пушкина, 10", 10, 500);
+        salon.addOrder(2, "2023-03-15", "Петров Петр", "ул. Лермонтова, 5", 7, 800);
+        salon.addOrder(3, "2023-02-10", "Сидорова Анна", "ул. Гоголя, 3", 14, 1200);
+
+        salon.displayOrders();
+
+        salon.displayOrdersByMonth(2);
+    </script>
+</body>
+
+</html>
