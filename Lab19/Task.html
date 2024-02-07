@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function TaskOne() {
+            var user = {
+                name: "Василий Васильевич",
+                age: 35
+            };
+            let json = JSON.stringify(user);
+            alert(json)
+            let userNew = JSON.parse(json);
+            alert(userNew.name);
+        }
+        function TaskTwo() {
+            let room = {
+                number: 23
+            };
+            let meetup = {
+                title: "Совещание",
+                occupiedBy: [{ name: "Иванов" }, { name: "Петров" }],
+                place: room
+            };
+            room.occupiedBy = meetup;
+            meetup.self = meetup;
+            alert(JSON.stringify(meetup, function replacer(key, value) {
+
+            }));
+        }
+        function TaskThree() {
+            const Array = [
+                {
+                    name: "Стул",
+                    material: "Дерево",
+                    color: "Коричневый",
+                    price: 50
+                },
+                {
+                    name: "Стол",
+                    material: "Стекло",
+                    color: "Прозрачный",
+                    price: 150
+                },
+                {
+                    name: "Диван",
+                    material: "Ткань",
+                    color: "Серый",
+                    price: 300
+                }
+            ];
+            const serialized = JSON.stringify(Array);
+            const deserialized = JSON.parse(serialized);
+            alert(`Сериализованный массив: ${serialized}`);
+            alert(`Десериализованный массив: ${deserialized}`);
+            }
+        TaskOne();
+        TaskTwo();
+        TaskThree();
+    </script>
+</body>
+
+</html>
