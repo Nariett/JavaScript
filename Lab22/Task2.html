@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <script>
+        function Square(number) {
+            if (number < 0) {
+                throw "Нельзя извлекать корень из отрицательного числа";
+            }
+            return Math.sqrt(number);
+        }
+
+        try {
+            console.log(Square(25)); 
+            console.log(Square(-25));
+        } catch (error) {
+            console.error(error);
+        }
+    </script>
+</body>
+</html>

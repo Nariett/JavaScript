@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+</head>
+
+<body>
+    <script>
+        let json = `[
+            {
+                "name": "user1",
+                "age": 25,
+                "salary": 1000
+            },
+            {
+                "name": "user2",
+                "age": 26,
+                "salary": 2000
+            },
+            {
+                "name": "user3",
+                "age": 27,
+                "salary": 3000
+            }
+        ]`;
+
+        try {
+            let parsedData = JSON.parse(json);
+            if (!Array.isArray(parsedData)) {
+                throw "Результат не является массивом";
+            }
+            console.log("JSON разобран корректно");
+            console.log("Результат разбора:", parsedData);
+        } catch (error) {
+            console.error("Ошибка при разборе JSON:", error);
+        }
+    </script>
+</body>
+</html>

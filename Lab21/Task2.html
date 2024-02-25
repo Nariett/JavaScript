@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <script>
+        var x;
+        do {
+            x = prompt("Введите число от 100 до 1000", "Введите число");
+            x = Number(x);
+        } while (isNaN(x) || x < 100 || x > 1000);
+        alert(`Число  = ${x}`);
+        window.scrollTo(0, (x - 100) * 10);
+    </script>
+</body>
+</html>
