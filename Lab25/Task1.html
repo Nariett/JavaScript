@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var elementsToRemove = document.querySelectorAll('body main div.body__content form :not(.search3__inner)');
+
+        elementsToRemove.forEach(function(element) {
+            element.parentNode.removeChild(element);
+        });
+
+        const searchForm = document.querySelector('.search3__inner');
+        const newHeader = document.createElement('div');
+        newHeader.innerHTML = '<h1>Привет пиндосы</h1>';
+        searchForm.parentNode.insertBefore(newHeader, searchForm);
+
+
+        document.body.style.background = 'red';
+
+
+        const searchForm2 = document.querySelector('.search3__inner');
+        const searchFormHTML = searchForm2.outerHTML;
+        console.log(searchFormHTML);
+
+
+    </script>
+
+</body>
+</html>

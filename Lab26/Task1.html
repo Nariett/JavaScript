@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function solveEquation(x, callback) {
+            let result;
+            if (x <= 2) {
+                let u = 0;
+                for (let k = 1; k <= 5; k++) {
+                    u += k * x ** 2 - x + k;
+                }
+                result = u;
+            } else {
+                result = Math.atan(x);
+            }
+            result = 1.5 * Math.abs(Math.sin(result));
+            const delay = Math.floor(Math.random() * 10 + 1) * 1000;
+            setTimeout(() => {
+                callback(result);
+            }, delay);
+        }
+
+
+        solveEquation(1, (result) => {
+            console.log('Результат уравнения f(1):', result);
+        });
+
+        solveEquation(3, (result) => {
+            console.log('Результат уравнения f(3):', result);
+        });
+
+        solveEquation(4, (result) => {
+            console.log('Результат уравнения f(4):', result);
+        });
+    </script>
+</body>
+
+</html>

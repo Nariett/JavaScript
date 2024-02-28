@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Date {
+            constructor(day = 1, month = 1, year = 2000) {
+                this.day = day;
+                this.month = month;
+                this.year = year;
+            }
+
+            isLeapYear() {
+                const { year } = this;
+                return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+            }
+
+            addFiveDay() {
+                const daysInMonth = [0, 31, this.isLeapYear() ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                let { day, month, year } = this;
+                day += 5;
+                while (day > daysInMonth[month]) {
+                    day -= daysInMonth[month];
+                    month++;
+                    if (month > 12) {
+                        month = 1;
+                        year++;
+                    }
+                }
+                this.day = day;
+                this.month = month;
+                this.year = year;
+            }
+        }
+
+        const date1 = new Date(20, 2, 2024);
+        console.log('Дата:', date1.day + '/' + date1.month + '/' + date1.year);
+        console.log('Является ли год високосным:', date1.isLeapYear());
+        date1.addFiveDay();
+        console.log('Дата после увеличения на 5 дней:', date1.day + '/' + date1.month + '/' + date1.year);
+    </script>
+</body>
+
+</html>
