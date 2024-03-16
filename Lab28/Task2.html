@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+
+<body>
+    <script>
+        class Computer {
+            constructor(processorName, frequency, ram) {
+                this.processorName = processorName;
+                this.frequency = frequency;
+                this.ram = ram;
+            }
+
+            calculateQuality() {
+                return (0.1 * this.frequency) + this.ram;
+            }
+
+            displayInfo() {
+                console.log(`Название процессора: ${this.processorName} \nЧастота процессора: ${this.frequency} МГц \nОбъем оперативной памяти: ${this.ram} Мб`);
+            }
+        }
+
+        class ComputerWithHDD extends Computer {
+            constructor(processorName, frequency, ram, memory) {
+                super(processorName, frequency, ram);
+                this.memory = memory;
+            }
+
+            calculateQuality() {
+                return super.calculateQuality() + (0.5 * this.memory);
+            }
+        }
+
+        const comp1 = new Computer("Intel Core i7", 3000, 8192);
+        console.log("Качество компьютера:", comp1.calculateQuality());
+        comp1.displayInfo();
+
+        const comp2 = new ComputerWithHDD("AMD Ryzen 5", 3500, 16384, 1000);
+        console.log("Качество компьютера с HDD:", comp2.calculateQuality());
+        comp2.displayInfo();
+
+    </script>
+</body>
+
+</html>

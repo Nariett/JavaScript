@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+
+<body>
+    <script>
+        class Data {
+            constructor(day, month, year) {
+                this.day = day;
+                this.month = month;
+                this.year = year;
+            }
+
+            toString() {
+                return `${this.day}.${this.month}.${this.year}`;
+            }
+        }
+
+        class FriendList extends Data {
+            constructor(day, month, year, FIO, number, dateBirth) {
+                super(day, month, year);
+                this.FIO = FIO;
+                this.number = number;
+                this.dateBirth = dateBirth;
+            }
+
+            daysUntilNextBirthday() {
+                const today = new Date();
+                const currentYear = today.getFullYear();
+                const nextBirthday = new Date(currentYear, this.dateBirth.month - 1, this.dateBirth.day); // Month in JavaScript Date object is 0-indexed
+                if (today > nextBirthday) {
+                    nextBirthday.setFullYear(currentYear + 1);
+                }
+                const daysUntilNextBirthday = Math.ceil((nextBirthday - today) / (1000 * 60 * 60 * 24));
+                return daysUntilNextBirthday;
+            }
+
+            formatInfo() {
+                return `ФИО: ${this.FIO}, Номер: ${this.number}, Дата рождения ${this.dateBirth.toString()}, Days Until Next Birthday: ${this.daysUntilNextBirthday()}`;
+            }
+        }
+
+        const friend = new FriendList(7, 9, 2004, "Sasha Samoilov", "+375291513933", new Data(8, 5, 2005));
+        console.log(friend.daysUntilNextBirthday());
+        console.log(friend.formatInfo());
+    </script>
+</body>
+
+</html>

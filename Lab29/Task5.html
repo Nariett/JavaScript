@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function executePromisesWithTimeout(promises, timeout) {
+            const timeoutPromises = promises.map(promise =>
+                Promise.race([
+                    promise,
+                    new Promise((resolve, reject) =>
+                        setTimeout(() => reject(new Error('Превышено время ожидания')), timeout)
+                    )
+                ])
+            );
+
+            return Promise.all(timeoutPromises);
+        }
+
+        const promises = [
+            new Promise(resolve => setTimeout(() => resolve('Промис 1'), 2000)),
+            new Promise(resolve => setTimeout(() => resolve('Промис 2'), 3000)),
+            new Promise(resolve => setTimeout(() => resolve('Промис 3'), 3000)),
+        ];
+
+        const timeout = 2500;
+
+        executePromisesWithTimeout(promises, timeout)
+            .then(results => {
+                console.log('Успешно:', results);
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+            });
+    </script>
+</body>
+</html>

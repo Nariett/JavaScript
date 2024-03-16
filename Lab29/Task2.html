@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <script>
+        function waitForAllPromises(promises) {
+            return Promise.all(promises);
+        }
+        const promise1 = new Promise(resolve => setTimeout(() => resolve('Промис 1'), 2000));
+        const promise2 = new Promise(resolve => setTimeout(() => resolve('Промис 2'), 1500));
+        const promise3 = new Promise(resolve => setTimeout(() => resolve('Промис 3'), 1000));
+
+        waitForAllPromises([promise1, promise2, promise3])
+            .then(results => {
+                console.log('Успешно:', results);
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+            });
+    </script>
+</body>
+</html>

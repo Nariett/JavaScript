@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+
+<body>
+    <script>
+        function reverseNumber(n) {
+            if (n < 10) {
+            
+                return n;
+            } else {
+                const lastDigit = n % 10;
+                const remainingDigits = Math.floor(n / 10);
+                const reversedRemaining = reverseNumber(remainingDigits); 
+                const reversedNumber = parseInt(String(lastDigit) + String(reversedRemaining));
+                return reversedNumber;
+            }
+        }
+
+        const number = 123456789;
+        const reversed = reverseNumber(number);
+        console.log(number);
+        console.log(reversed); 
+    </script>
+</body>
+
+</html>

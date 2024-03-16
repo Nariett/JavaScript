@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function fetchDataForUrls(urls) {
+            return Promise.all(urls.map(url =>
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => ({ url, data }))
+                    .catch(error => ({ url, error }))
+            ));
+        }
+
+        const urls = ['https://jsonplaceholder.typicode.com/posts/1', 'https://jsonplaceholder.typicode.com/posts/2', 'https://jsonplaceholder.typicode.com/posts/3'];
+        
+        fetchDataForUrls(urls)
+            .then(results => {
+                console.log('Результат:', results);
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+            });
+    </script>
+</body>
+</html>
